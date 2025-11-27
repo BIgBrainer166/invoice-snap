@@ -58,30 +58,31 @@ export default function SignUpPage() {
     <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 -left-48 w-96 h-96 bg-secondary/50 rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 -right-48 w-96 h-96 bg-secondary/50 rounded-full blur-[100px]" />
       </div>
 
       <div className="w-full max-w-md relative z-10">
         {/* Logo/Brand */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 text-2xl font-bold font-['Poppins'] text-foreground mb-2">
-            <div className="w-10 h-10 rounded-xl bg-linear-to-br from-primary to-purple-600 flex items-center justify-center shadow-lg shadow-primary/20">
-              <Zap className="w-6 h-6 text-white" />
+          <Link href="/" className="inline-flex items-center gap-2 text-2xl font-bold font-heading text-foreground mb-2">
+            <div className="bg-none flex items-center justify-center">
+               {/* Assuming logo.png exists as used in login page */}
+               <img src="/logo.png" alt="Logo" width={40} height={40} />
             </div>
             InvoiceSnap
           </Link>
-          <p className="text-muted-foreground font-['Inter']">Create your account</p>
+          <p className="text-muted-foreground">Create your account</p>
         </div>
 
         {/* Card with glassmorphism */}
         <div className="bg-white/70 backdrop-blur-xl rounded-3xl border border-white/60 p-8 shadow-2xl shadow-slate-200/50">
-          <h1 className="text-2xl font-bold font-['Poppins'] text-foreground mb-2">Sign up</h1>
-          <p className="text-muted-foreground font-['Inter'] text-sm mb-6">Start creating invoices in 90 seconds</p>
+          <h1 className="text-2xl font-bold font-heading text-foreground mb-2">Sign up</h1>
+          <p className="text-muted-foreground text-sm mb-6">Start creating invoices in 90 seconds</p>
 
           <form onSubmit={handleSignUp} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-foreground font-['Inter']">
+              <Label htmlFor="email" className="text-foreground">
                 Email
               </Label>
               <Input
@@ -91,11 +92,11 @@ export default function SignUpPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-white border-slate-200 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-primary/20 rounded-xl"
+                className="bg-white border-slate-200 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-primary/20 rounded-xl h-11"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-foreground font-['Inter']">
+              <Label htmlFor="password" className="text-foreground">
                 Password
               </Label>
               <Input
@@ -105,11 +106,11 @@ export default function SignUpPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-white border-slate-200 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-primary/20 rounded-xl"
+                className="bg-white border-slate-200 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-primary/20 rounded-xl h-11"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="repeat-password" className="text-foreground font-['Inter']">
+              <Label htmlFor="repeat-password" className="text-foreground">
                 Confirm Password
               </Label>
               <Input
@@ -119,7 +120,7 @@ export default function SignUpPage() {
                 required
                 value={repeatPassword}
                 onChange={(e) => setRepeatPassword(e.target.value)}
-                className="bg-white border-slate-200 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-primary/20 rounded-xl"
+                className="bg-white border-slate-200 text-foreground placeholder:text-slate-400 focus:border-primary focus:ring-primary/20 rounded-xl h-11"
               />
             </div>
 
@@ -129,7 +130,7 @@ export default function SignUpPage() {
 
             <Button
               type="submit"
-              className="w-full bg-linear-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-['Inter'] font-medium group h-11 rounded-xl shadow-lg shadow-primary/25"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium group h-11 rounded-xl shadow-lg shadow-primary/20 transition-all hover:scale-[1.02]"
               disabled={isLoading}
             >
               {isLoading ? "Creating account..." : "Create account"}
@@ -138,9 +139,9 @@ export default function SignUpPage() {
           </form>
 
           <div className="mt-6 text-center">
-            <p className="text-sm text-muted-foreground font-['Inter']">
+            <p className="text-sm text-muted-foreground">
               Already have an account?{" "}
-              <Link href="/auth/login" className="text-primary hover:text-primary/80 font-medium">
+              <Link href="/auth/login" className="text-foreground font-medium hover:underline">
                 Sign in
               </Link>
             </p>

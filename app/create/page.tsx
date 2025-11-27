@@ -130,6 +130,18 @@ export default function CreateInvoicePage() {
         throw new Error("User not authenticated")
       }
 
+      // Check for duplicate invoice number
+      const { data: existingInvoice } = await supabase
+        .from("invoices")
+        .select("id")
+        .eq("user_id", user.id)
+        .eq("invoice_number", formData.invoiceNumber)
+        .single()
+
+      if (existingInvoice) {
+        throw new Error("Invoice number already exists. Please use a different number.")
+      }
+
       const { error } = await supabase.from("invoices").insert({
         user_id: user.id,
         invoice_number: formData.invoiceNumber,
@@ -155,7 +167,7 @@ export default function CreateInvoicePage() {
       router.push("/dashboard")
     } catch (error) {
       console.error("Error creating invoice:", error)
-      // Ideally show a toast notification here
+      alert(error instanceof Error ? error.message : "An error occurred")
     } finally {
       setIsLoading(false)
     }
@@ -190,7 +202,7 @@ export default function CreateInvoicePage() {
               <p className="text-muted-foreground font-sans text-lg">Add your logo and client details</p>
             </div>
 
-            <div className="bg-card border border-border/50 rounded-[1.5rem] p-8 shadow-xl shadow-black/5 space-y-6">
+            <div className="bg-card border border-border/50 rounded-3xl p-8 shadow-xl shadow-black/5 space-y-6">
               {/* Branding Section */}
               <div className="p-6 bg-secondary/30 rounded-xl border border-border/50 space-y-4">
                 <div className="flex items-center justify-between">
@@ -372,7 +384,7 @@ export default function CreateInvoicePage() {
               <p className="text-muted-foreground font-sans text-lg">Add the services or products you're billing for</p>
             </div>
 
-            <div className="bg-card border border-border/50 rounded-[1.5rem] p-8 shadow-xl shadow-black/5 space-y-6">
+            <div className="bg-card border border-border/50 rounded-3xl p-8 shadow-xl shadow-black/5 space-y-6">
               {formData.items.map((item, index) => (
                 <div
                   key={item.id}
@@ -480,7 +492,7 @@ export default function CreateInvoicePage() {
               <p className="text-muted-foreground font-sans text-lg">Check the details before generating the invoice</p>
             </div>
 
-            <div className="bg-card text-card-foreground rounded-[1.5rem] p-8 shadow-xl shadow-black/5 border border-border/50">
+            <div className="bg-card text-card-foreground rounded-3xl p-8 shadow-xl shadow-black/5 border border-border/50">
               {/* Logo Preview in Review Step */}
               {formData.logoUrl && (
                 <div className={cn("mb-8 flex", {

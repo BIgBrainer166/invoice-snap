@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { ArrowRight, CheckCircle2, Clock, FileText, Send, Zap, User, Sparkles, Stars, TrendingUp } from "lucide-react"
+import { ArrowRight, CheckCircle2, Clock, FileText, Send, User, Sparkles, Stars, TrendingUp } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
@@ -24,7 +25,7 @@ export default function LandingPage() {
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <Zap className="h-4 w-4 text-primary-foreground" />
+              <Image src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" width={100} height={100} />
             </div>
             <span className="text-xl font-bold font-heading tracking-tight">InvoiceSnap</span>
           </div>
@@ -35,11 +36,12 @@ export default function LandingPage() {
             <Link href="#pricing" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Pricing
             </Link>
-            <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            {/* <Link href="/auth/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Login
-            </Link>
+            </Link> */}
             <Button
               className="rounded-full px-6 bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/20"
+              onClick={() => router.push("/auth/login")}
             >
               Get Started
             </Button>
@@ -73,13 +75,7 @@ export default function LandingPage() {
               >
                 Start Invoicing Free <ArrowRight className="h-5 w-5 ml-2" />
               </Button>
-              {/* <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full px-10 h-14 text-lg border-border bg-white hover:bg-secondary/50 transition-all duration-300"
-              >
-                View Demo
-              </Button> */}
+              
             </div>
           </div>
         </div>
@@ -107,7 +103,7 @@ export default function LandingPage() {
               <div className="h-full flex flex-col p-10 relative">
                 <div className="z-10">
                   <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <Zap className="h-6 w-6 text-primary" />
+                    <Image src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" width={100} height={100} />
                   </div>
                   <h3 className="text-3xl font-bold font-heading mb-4">Lightning Fast</h3>
                   <p className="text-lg text-muted-foreground max-w-md">
@@ -117,7 +113,7 @@ export default function LandingPage() {
                 <div className="absolute right-0 bottom-0 w-2/3 h-2/3 bg-linear-to-tl from-secondary to-transparent rounded-tl-[4rem] opacity-50 group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute right-10 bottom-10 bg-white p-6 rounded-xl shadow-lg border border-border/50 rotate-3 group-hover:rotate-0 transition-transform duration-500">
                   <Link href="/" className="flex items-center gap-2 text-xl font-bold font-heading text-primary tracking-tight">
-                    <img src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" />
+                    <Image src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" width={100} height={100} />
                     InvoiceSnap
                   </Link>
                   <div className="flex items-center gap-4 mt-4">
@@ -183,18 +179,18 @@ export default function LandingPage() {
       </section>
 
       {/* Social Proof / Trust */}
-      <section className="py-20 bg-white border-t border-border/50">
+      {/* <section className="py-20 bg-white border-t border-border/50">
         <div className="container mx-auto px-6 text-center">
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest mb-12">Trusted by 10,000+ Freelancers</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500"> */}
              {/* Placeholders for logos - using text for now but styled like logos */}
-             <div className="flex items-center justify-center text-2xl font-bold font-heading">Acme Corp</div>
+             {/* <div className="flex items-center justify-center text-2xl font-bold font-heading">Acme Corp</div>
              <div className="flex items-center justify-center text-2xl font-bold font-heading">GlobalTech</div>
              <div className="flex items-center justify-center text-2xl font-bold font-heading">Nebula</div>
              <div className="flex items-center justify-center text-2xl font-bold font-heading">FoxRun</div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
       <section className="py-32 bg-primary text-primary-foreground relative overflow-hidden">
@@ -206,6 +202,7 @@ export default function LandingPage() {
             Join thousands of freelancers who have switched to the simplest invoicing tool on the planet.
           </p>
           <Button
+            onClick={() => router.push("/auth/login")}
             size="lg"
             className="rounded-full px-12 h-16 text-xl bg-white text-primary hover:bg-white/90 hover:scale-105 transition-all duration-300 shadow-2xl"
           >
@@ -213,7 +210,7 @@ export default function LandingPage() {
           </Button>
           <p className="mt-8 text-sm text-white/50">No credit card required • Cancel anytime</p>
         </div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/noise.png')] opacity-10 mix-blend-overlay" />
+        <div className="absolute top-0 left-0 w-full h-full  opacity-10 mix-blend-overlay" />
       </section>
 
       {/* Footer */}
@@ -222,7 +219,7 @@ export default function LandingPage() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                <Zap className="h-4 w-4 text-primary-foreground" />
+                <Image src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" width={100} height={100} />
               </div>
               <span className="text-xl font-bold font-heading">InvoiceSnap</span>
             </div>

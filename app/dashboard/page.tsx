@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Plus, FileText, DollarSign, Clock, LogOut, User } from "lucide-react"
 import { InvoiceList } from "@/components/invoice-list"
+import Image from "next/image"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -40,13 +41,13 @@ export default async function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="border-b border-border/50 bg-background/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-xl font-bold font-heading text-primary tracking-tight">
-              <img src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" />
+            <Link href="/" className="flex items-center gap-2 text-xl font-bold  text-primary tracking-tight">
+              <Image src="/logo.png" alt="InvoiceSnap Logo" className="w-8 h-8 rounded-lg object-cover" width={100} height={100} />
               InvoiceSnap
             </Link>
 
@@ -77,7 +78,7 @@ export default async function DashboardPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Welcome Section */}
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-3 tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-bold  text-primary mb-3 tracking-tight">
             Welcome back
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl">
@@ -94,7 +95,7 @@ export default async function DashboardPage() {
                 <FileText className="w-5 h-5 text-primary" />
               </div>
             </div>
-            <p className="text-4xl font-bold font-heading text-primary">{totalInvoices}</p>
+            <p className="text-2xl font-bold  text-primary">{totalInvoices}</p>
           </div>
 
           <div className="bg-card rounded-3xl border border-border/50 p-8 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 group">
@@ -104,7 +105,7 @@ export default async function DashboardPage() {
                 <DollarSign className="w-5 h-5 text-green-700" />
               </div>
             </div>
-            <p className="text-4xl font-bold font-heading text-primary">{paidInvoices}</p>
+            <p className="text-2xl font-bold  text-primary">{paidInvoices}</p>
           </div>
 
           <div className="bg-card rounded-3xl border border-border/50 p-8 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 group">
@@ -114,7 +115,7 @@ export default async function DashboardPage() {
                 <DollarSign className="w-5 h-5 text-primary" />
               </div>
             </div>
-            <p className="text-4xl font-bold font-heading text-primary">${totalRevenue.toFixed(2)}</p>
+            <p className="text-2xl font-bold  text-primary">${totalRevenue.toFixed(2)}</p>
           </div>
 
           <div className="bg-card rounded-3xl border border-border/50 p-8 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 transition-all duration-300 group">
@@ -124,7 +125,7 @@ export default async function DashboardPage() {
                 <Clock className="w-5 h-5 text-orange-700" />
               </div>
             </div>
-            <p className="text-4xl font-bold font-heading text-primary">{pendingInvoices}</p>
+            <p className="text-2xl font-bold  text-primary">{pendingInvoices}</p>
           </div>
         </div>
 
@@ -132,7 +133,7 @@ export default async function DashboardPage() {
         <div className="bg-card rounded-3xl border border-border/50 shadow-xl shadow-black/5 p-8 md:p-10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
             <div>
-              <h2 className="text-3xl font-bold font-heading text-primary mb-2">Recent Invoices</h2>
+              <h2 className="text-3xl font-bold  text-primary mb-2">Recent Invoices</h2>
               <p className="text-muted-foreground">Manage and track your recent transactions</p>
             </div>
             <Button
